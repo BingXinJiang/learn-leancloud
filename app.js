@@ -7,8 +7,10 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const AV = require('leancloud-storage');
 
-const index = require('./routes/index')
-const users = require('./routes/users')
+const index = require('./routes/index');
+const users = require('./routes/users');
+const todo = require('./routes/todo');
+const type = require('./routes/type');
 
 // error handler
 onerror(app)
@@ -34,8 +36,10 @@ app.use(async (ctx, next) => {
 })
 AV.init('UV5HLQF1BoPkxt7MKHSANLy4-gzGzoHsz', 'AGWbe4iAkHQnrufbYkOd4Dki');
 // routes
-app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+app.use(index.routes(), index.allowedMethods());
+app.use(users.routes(), users.allowedMethods());
+app.use(todo.routes(), todo.allowedMethods());
+app.use(type.routes(), type.allowedMethods());
 
 // error-handling
 app.on('error', (err, ctx) => {

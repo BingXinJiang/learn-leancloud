@@ -79,6 +79,4 @@ router.get('/logout', async (ctx, next) => {
   ctx.body = '用户退出！';
 });
 
-
-
-module.exports = router
+module.exports = router;
